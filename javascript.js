@@ -7,8 +7,9 @@ const playerSelection = "rock";
 
 let computerSelection = "";
 let roundResult = "";
-
-
+let playerScore = 0;
+let computerScore = 0;
+let keepPlaying = true;
 
 
 console.log(game())
@@ -16,17 +17,34 @@ console.log(game())
 
 function game() {
     //Play 5 rounds and keep score, stop when a player gets to 3
-    for (let i = 1; i < 6; i++) {
+    //playerScore = 3 || computerScore = 3
+    //i < 6
+    /*for (let i = 1; i < 20; i++) {
         computerSelection = computerPlay();
         console.log("Round: " + i)
         console.log("Player selects: " + playerSelection)
         console.log("Computer selects: " + computerSelection)
         roundResult = playRound(playerSelection, computerSelection);
         console.log("Round result: " + roundResult)
-
-
-
+        console.log("Player score: "+ playerScore)
+        console.log("Computer score: " + computerScore)
     }
+    */
+   let i = 1;
+   
+   while (keepPlaying = true) {
+        computerSelection = computerPlay();
+        console.log("Round: " + i)
+        console.log("Player selects: " + playerSelection)
+        console.log("Computer selects: " + computerSelection)
+        roundResult = playRound(playerSelection, computerSelection);
+        console.log("Round result: " + roundResult)
+        console.log("Player score: "+ playerScore)
+        console.log("Computer score: " + computerScore)
+        
+        i = i +1;
+
+   }
 
 
 
@@ -34,45 +52,70 @@ function game() {
 
 function playRound() {
 
-    //Show inputs
-    //console.log(playerSelection)
-    //console.log(computerSelection)
-
     //Compare
     let playRoundResult = "";
     if (playerSelection == "rock" && computerSelection == "scissors") {
         playRoundResult = "Rock beats Scissors. Player Wins";
+        playerScore = playerScore + 1;
+
     }
     if (playerSelection == "rock" && computerSelection == "paper") {
         playRoundResult = "Paper beats Rock. Computer Wins";
+        computerScore = computerScore + 1;
+
     }
     if (playerSelection == "rock" && computerSelection == "rock") {
         playRoundResult = "Both select Rock. It is a tie.";
+
     }
     if (playerSelection == "scissors" && computerSelection == "scissors") {
         playRoundResult = "Both select Scissors. It is a tie";
+
     }
     if (playerSelection == "scissors" && computerSelection == "paper") {
         playRoundResult = "Scissors beats Paper. Player Wins";
+        playerScore = playerScore + 1;
+
     }
     if (playerSelection == "scissors" && computerSelection == "rock") {
         playRoundResult = "Rock beats Scissors. Computer Wins";
+        computerScore = computerScore + 1;
+
     }
     if (playerSelection == "paper" && computerSelection == "scissors") {
         playRoundResult = "Scissors beats Paper. Computer Wins";
+        computerScore = computerScore + 1;
+
     }
     if (playerSelection == "paper" && computerSelection == "paper") {
         playRoundResult = "Both select Paper. It is a tie";
+
     }
     if (playerSelection == "paper" && computerSelection == "rock") {
         playRoundResult = "Paper beats Rock. Players Wins";
+        playerScore = playerScore + 1;
+
     }
 
-
+    //gameOver(playerScore, computerScore)
+    keepPlaying = gameOver(playerScore, computerScore);
     return playRoundResult
 
 
 }
+
+function gameOver(playerScore, computerScore) {
+    if ((playerScore === 3) || (computerScore === 3)) {
+        console.log("gameover = true")
+        return true
+    } else {
+        console.log("gameover = false")
+        return false
+    }
+
+    
+}
+
 
 function computerPlay() {
     //Randomly select computer choice
