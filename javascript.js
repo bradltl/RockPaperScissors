@@ -9,7 +9,7 @@ let computerSelection = "";
 let roundResult = "";
 let playerScore = 0;
 let computerScore = 0;
-let keepPlaying = true;
+let keepPlaying = "true";
 
 
 console.log(game())
@@ -17,6 +17,7 @@ console.log(game())
 
 function game() {
     //Play 5 rounds and keep score, stop when a player gets to 3
+    console.log("Begin Game Function")
     //playerScore = 3 || computerScore = 3
     //i < 6
     /*for (let i = 1; i < 20; i++) {
@@ -28,11 +29,13 @@ function game() {
         console.log("Round result: " + roundResult)
         console.log("Player score: "+ playerScore)
         console.log("Computer score: " + computerScore)
+        console.log("Keep playing:" + keepPlaying)
     }
     */
+
    let i = 1;
    
-   while (keepPlaying = true) {
+   while (keepPlaying === "true") {
         computerSelection = computerPlay();
         console.log("Round: " + i)
         console.log("Player selects: " + playerSelection)
@@ -41,14 +44,24 @@ function game() {
         console.log("Round result: " + roundResult)
         console.log("Player score: "+ playerScore)
         console.log("Computer score: " + computerScore)
+
+
+
+        //gameOver(playerScore, computerScore)
+        console.log("Before keepPlaying = " + keepPlaying)
+        keepPlaying = gameOver(playerScore, computerScore);
+        console.log("After keepPlaying = " + keepPlaying)        
+        //keepPlaying = false;
         
         i = i +1;
 
    }
+   
 
 
 
 }
+
 
 function playRound() {
 
@@ -97,22 +110,30 @@ function playRound() {
 
     }
 
-    //gameOver(playerScore, computerScore)
-    keepPlaying = gameOver(playerScore, computerScore);
     return playRoundResult
 
 
 }
 
 function gameOver(playerScore, computerScore) {
-    if ((playerScore === 3) || (computerScore === 3)) {
+    
+    console.log("Begin gameOver Function")
+    console.log("gO-PS = " +playerScore)
+    console.log("gO-CS = " +computerScore)
+    
+    //console.log("gO keepPlaying = " + keepPlaying)
+      
+
+    
+    if (playerScore === 3){
+        //|| (computerScore === 3)
         console.log("gameover = true")
-        return true
+        return keepPlaying = "false" 
     } else {
         console.log("gameover = false")
-        return false
+        return keepPlaying = "true" 
     }
-
+    
     
 }
 
