@@ -1,6 +1,6 @@
 console.log("Beginning Game")
 
-const playerSelection = "rock";
+//const playerSelection = "rock";
 
 let computerSelection = "";
 let roundResult = "";
@@ -9,7 +9,9 @@ let computerScore = 0;
 let keepPlaying = "true";
 
 
-console.log(game())
+//console.log(game())
+const keys = document.querySelectorAll('.key');
+keys.forEach(key => key.addEventListener('click', playRound));
 
 
 function game() {
@@ -39,10 +41,11 @@ function game() {
 }
 
 
-function playRound() {
+function playRound(e) {
 
     //Compare
     let playRoundResult = "";
+    let playerSelection = document.querySelector(`.key[data-key="${e.keyCode}"]`);
 
     if (playerSelection === computerSelection) {
         playRoundResult = "Both select Paper. It is a tie";
