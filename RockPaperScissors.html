@@ -10,15 +10,27 @@
   
 
 
-  <div class="keys">
-    <div data-key="rock" class="key">
-      <button>Rock</button>
+  <div class="playerControls">
+    <div class="key">
+      <button id="rock">Rock</button>
     </div>
-    <div data-key="paper" class="key">
-      <button>Paper</button>
+    <div class="key">
+      <button id="paper">Paper</button>
     </div>
-    <div data-key="scissors" class="key">
-      <button>Scissors</button>
+    <div class="key">
+      <button id="scissors">Scissors</button>
+    </div>
+
+    <div id="result" class="console">
+      <h4>Game Reults:</h4>
+      <p id="roundResult"></p>
+
+    </div>
+
+    <div id="score">
+      <h3>Score</h3>
+      <p id="playerScore"></p>
+      <p id="computerScore"></p>
     </div>
 
   <script src="javascript.js"></script>
